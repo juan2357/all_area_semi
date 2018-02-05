@@ -33,15 +33,12 @@ int main() {
   //Runs program until user enters "n".
   while (user_response == "y" || user_response == "Y")
 	{
-
+      //Function Call.
       Compute(a, b, c, area, semiperimeter);
 
 	    cout<<"Would you like to do another calculation (Y or N): "<<endl;
 	    cin>>user_response;
 	}
-
-
-
   return 0;
 }
 //Function Definitions
@@ -53,27 +50,25 @@ int main() {
 //and the area.
 void Compute(double a, double b, double c, double & area, double & s){
 
-
   std::cout << "Please enter the first side" << '\n';
   std::cin >> a;
   std::cout << "Please enter the second side" << '\n';
   std::cin >> b;
   std::cout << "Please enter the third side" << '\n';
   std::cin >> c;
-
+  //Condition statements that one side must be
+  //greater that the sum of two other sides
   if ((a+b) > c
       && (b+c) > a
       && (a+c) > b) {
-
+        //calculations
         s = (a+b+c)/2;
-
         area = sqrt(((s-a)*(s-b)*(s-c))*s);
-
+        //Printed outputs
         std::cout << "The semiperimeter of the triangle is: " << s << '\n';
         std::cout << "The area of the " << area << '\n';
   } else {
     std::cout << "You have entered invalid sides" << '\n';
   }
-
   return;
 }
