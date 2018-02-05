@@ -20,12 +20,11 @@ using namespace std;
 //three call by value parameters (a, b, c) that provide the
 //lengths of the edges and two call by reference parameters
 //(area, semiperimeter) that stores the computed area and perimeter.
-void Compute(int a, int b, int c, double & area, double & semiperimeter);
+void Compute(double a, double b, double c, double & area, double & semiperimeter);
 //Main Program
 int main() {
   //Variable Declarations
-  int a, b, c;
-  double area, semiperimeter;
+  double a, b, c, area, semiperimeter;
   string user_response = "y";
   //Magic Formula
   cout.setf(ios::fixed);
@@ -34,6 +33,9 @@ int main() {
   //Runs program until user enters "n".
   while (user_response == "y" || user_response == "Y")
 	{
+
+      Compute(a, b, c, area, semiperimeter);
+
 	    cout<<"Would you like to do another calculation (Y or N): "<<endl;
 	    cin>>user_response;
 	}
@@ -41,4 +43,37 @@ int main() {
 
 
   return 0;
+}
+//Function Definitions
+//Name:  Compute
+//Precondition: The varialbes a, b, c, area, and semiperimeter have not been initialized
+//Postcondition: The variables have been initialized by the user and prints results.
+//Description: Get input values from user and uses first three parameters
+//that initializes three sides. The three sides are used to calcuate the semiperimeter
+//and the area.
+void Compute(double a, double b, double c, double & area, double & s){
+
+
+  std::cout << "Please enter the first side" << '\n';
+  std::cin >> a;
+  std::cout << "Please enter the second side" << '\n';
+  std::cin >> b;
+  std::cout << "Please enter the third side" << '\n';
+  std::cin >> c;
+
+  if ((a+b) > c
+      && (b+c) > a
+      && (a+c) > b) {
+
+        s = (a+b+c)/2;
+
+        area = sqrt(((s-a)*(s-b)*(s-c))*s);
+
+        std::cout << "The semiperimeter of the triangle is: " << s << '\n';
+        std::cout << "The area of the " << area << '\n';
+  } else {
+    std::cout << "You have entered invalid sides" << '\n';
+  }
+
+  return;
 }
